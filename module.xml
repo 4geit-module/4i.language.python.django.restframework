@@ -1,2 +1,21 @@
 <?xml version="1.0"?>
-<module name="4i.language.python.django.restframework" branch="master"/>
+<module name="4i.language.python.django.restframework" branch="master">
+  <module name="4i.language.python.django" required_branch="master"/>
+  
+  <require name="djangorestframework" version="2.4.4"/>
+  <!-- <require name="django-oauth2-provider" version="0.2.6.1"/> -->
+
+  <installed_app name="rest_framework"/>
+  <!-- <installed_app name="provider"/> -->
+  <!-- <installed_app name="provider.oauth2"/> -->
+
+  <import context="urls" mainapp="True" from="rest_framework" import="routers"/>
+  <import context="views" from="rest_framework" import="viewsets"/>
+  <import context="views" from="." import="serializers"/>
+  
+  <node name="project">
+    
+  </node> <!-- !project -->
+
+  <test name="empty" description="empty project using restframework"/>
+</module>
