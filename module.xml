@@ -18,4 +18,5 @@
   </node> <!-- !project -->
 
   <test name="empty" description="empty project using restframework"/>
+  <test name="single_app" description="single app using restframework"/>
 </module>
