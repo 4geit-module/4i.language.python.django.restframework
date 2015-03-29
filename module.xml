@@ -13,10 +13,12 @@
   <import context="views" from="rest_framework" import="viewsets"/>
   <import context="views" from="." import="serializers"/>
   
-  <node name="project">
-    
-  </node> <!-- !project -->
-
+  <variable key="REST_FRAMEWORK">{
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGINATE_BY': 10
+}</variable>
+  <!-- 'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework.authentication.OAuth2Authentication',),\n\ -->
+  
   <test name="empty" description="empty project using restframework"/>
   <test name="single_app" description="single app using restframework"/>
 </module>
