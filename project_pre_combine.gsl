@@ -17,28 +17,27 @@
 # Caner Candan <caner@candan.fr>, http://caner.candan.fr
 #
 
-new project.import as i
-  define i.context = "urls"
-  define i.\from = "$(projectnode.name)"
-  define i.import = "views"
-  define i.alias  = "$(projectnode.name)_views"
-endnew i
+new project.code as c
+  define c.context = "urls"
+  define c.mainapp = "True"
+  define c.hook = "pre"
+  define c. = "router = routers.DefaultRouter()\n"
+  for project.app as a
+    for a.model as m
+      c. += "router.register(r'$(a.name)_$(m.name)', $(a.name)_views.$(m.name:)ViewSet)\n"
+    endfor m
+  endfor a
+endnew c
 
 new project.code as c
-  define c.context = "views"
-  define c.hook = "content"
-  define c.app = projectnode.name
-  for projectnode.model as m
-    define c. = "$(c.?)\
-class $(m.name:)ViewSet(viewsets.ModelViewSet):\n\
-    \"\"\"\n\
-    API endpoint that allows $(m.name)s to be viewed or edited.\n\
-    \"\"\"\n\
-    queryset = models.$(m.name:).objects.all()\n\
-    serializer_class = serializers.$(m.name:)Serializer\n\
-\n\
+  define c.context = "urls"
+  define c.mainapp = "True"
+  define c.hook = "urls"
+  define c. = "\
+    url(r'^', include(router.urls)),\n\
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),\n\
 "
-  endfor m
+#   url(r'^oauth2/', include('provider.oauth2.urls', namespace='oauth2')),\n\
 endnew c
 
 .endtemplate
