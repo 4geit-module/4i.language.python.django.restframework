@@ -41,4 +41,13 @@ class $(m.name:)ViewSet(viewsets.ModelViewSet):\n\
   endfor m
 endnew c
 
+new project.dir as d
+  define d.name = projectnode.name
+
+  new d.output as o
+    define o.name = 'serializers'
+    gsl from 'app/serializers__py.gsl'
+  endnew o
+endnew d
+
 .endtemplate
