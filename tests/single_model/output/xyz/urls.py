@@ -3,11 +3,13 @@
 #
 # All rights reserved.
 
+from myapp import views as myapp_views
 from rest_framework import routers
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 router = routers.DefaultRouter()
+router.register(r'myapp_myclass', myapp_views.MyClassViewSet)
 
 urlpatterns = patterns('',
     # Examples:

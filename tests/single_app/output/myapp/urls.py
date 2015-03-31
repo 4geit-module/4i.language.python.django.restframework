@@ -4,7 +4,6 @@
 # All rights reserved.
 
 from myapp import views as myapp_views
-from rest_framework import routers
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView, DetailView, ListView
 from . import models, views
