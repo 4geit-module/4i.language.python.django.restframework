@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <module name="4i.language.python.django.restframework" branch="master">
   <module name="4i.language.python.django" required_branch="master"/>
-  
+
+  <todo>add a viewset test</todo>
+
   <require name="djangorestframework" version="2.4.4"/>
   <!-- <require name="django-oauth2-provider" version="0.2.6.1"/> -->
 
