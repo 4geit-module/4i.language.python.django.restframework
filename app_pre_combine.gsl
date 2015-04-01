@@ -32,24 +32,21 @@ new project.import as i
   define i.alias  = "$(projectnode.name)_views"
 endnew i
 
-if defined(projectnode->model)
+for projectnode.model as m
   new project.code as c
     define c.context = "views"
     define c.hook = "content"
     define c.app = projectnode.name
-    for projectnode.model as m
-      define c. = "\
+    define c. = "\
 class $(m.name:)ViewSet(viewsets.ModelViewSet):\n\
     \"\"\"\n\
     API endpoint that allows $(m.name)s to be viewed or edited.\n\
     \"\"\"\n\
     queryset = models.$(m.name:).objects.all()\n\
     serializer_class = serializers.$(m.name:)Serializer\n\
-\n\
 "
-    endfor m
   endnew c
-endif
+endfor m
 
 new project.dir as d
   define d.name = projectnode.name
