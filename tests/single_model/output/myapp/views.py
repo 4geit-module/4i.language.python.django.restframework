@@ -20,4 +20,3 @@ class MyClassViewSet(viewsets.ModelViewSet):
     queryset = models.MyClass.objects.all()
     serializer_class = serializers.MyClassSerializer
 
-
